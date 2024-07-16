@@ -10,6 +10,9 @@ from django.contrib.auth.decorators import login_required
 def profile(requset):
     return render(requset, 'profile.html', {})
 
+def home_page(requset):
+    return render(requset, 'home.html', {})
+
 def home(requset):
     return render(requset, 'base.html', {})
 
