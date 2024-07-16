@@ -11,6 +11,6 @@ def profile(requset):
     return render(requset, 'profile.html', {})
 
 def home(requset):
-    return render(requset, 'registration/login.html', {})
+    return render(requset, 'base.html', {})
 
 
