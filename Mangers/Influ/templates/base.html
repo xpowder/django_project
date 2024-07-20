@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'Css/sheet.css' %}" />
-    <title>Managers</title>
+    <link rel="stylesheet" href="{% static 'Css/sheet.css' %}">
+    <title>{% block title %}Managers{% endblock %}</title>
 </head>
 <body>
     <nav>
         <div class="nav-content">
             <div class="logo">
-                <a href="#">ArtisManagers.</a>
+                <a href="{% url 'home' %}">ArtisManagers.</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
@@ -20,29 +20,24 @@
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
+            {% if user.is_authenticated %}
+        <li class="nav-links"><a href="{% url 'profile' %}">Profile</a></li>
+        <li class="nav-links"><a href="{% url 'account_logout' %}">Logout</a></li>
+    {% else %}
+    <li class="nav-links"><a href="/accounts/login/">Login</a></li>
+
+
+
+    {% endif %}
+</ul>
         </div>
     </nav>
 
-    {% block content %}
-    <!-- Default content for the block -->
-    <section class="home">
-        <h2>Sticky Navigation Bar</h2>
-        <div class="text">
-            <p>Your default content here...</p>
-        </div>
-    </section>
-    {% endblock content %}
-
-    <script>
-        let nav = document.querySelector("nav");
-        window.onscroll = function() {
-            if(document.documentElement.scrollTop > 20) {
-                nav.classList.add("sticky");
-            } else {
-                nav.classList.remove("sticky");
-            }
-        }
-    </script>
+    <div class="content">
+        {% block content %}
+        <!-- Child templates will insert content here -->
+         <a href="{% url 'create-profile'%}">Create your Profile</a>
+        {% endblock %}
+    </div>
 </body>
 </html>
-

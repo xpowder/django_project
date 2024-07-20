@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Ensure the body takes up the full viewport height */
+
+
+    .login-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .secondary {
+        background-color: #6c757d;
+        margin-top: 10px;
+    }
+
+    .secondary:hover {
+        background-color: #5a6268;
+    }
+
+    .login-alternatives {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    hr {
+        margin: 20px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+</style>
+
+<div class="login-container">
+    <h1>Sign In</h1>
+    {% if not SOCIALACCOUNT_ONLY %}
+        <p>If you have not created an account yet, then please <a href="{{ signup_url }}">sign up</a> first.</p>
+        <form method="post" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ redirect_field.value }}
+            <button type="submit">Sign In</button>
+        </form>
+    {% endif %}
+    {% if LOGIN_BY_CODE_ENABLED %}
+        <hr>
+        <h2>Mail me a sign-in code</h2>
+        <a href="{{ request_login_code_url }}" class="secondary">Request Code</a>
+    {% endif %}
+    {% if SOCIALACCOUNT_ENABLED %}
+        <div class="login-alternatives">
+            {% include "socialaccount/snippets/login.html" %}
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

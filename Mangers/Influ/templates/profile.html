@@ -1,4 +1,22 @@
-{% extends "base.html"%}
+{% extends 'base.html' %}
 {% block content %}
-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-{% endblock content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ user_info.name }}'s Profile</title>
+</head>
+<body>
+    <h1>{{ user_info.name }}</h1>
+    <img src="{{ user_info.avatar }}" alt="Profile Image">
+    <p><strong>Bio:</strong> {{ user_info.bio }}</p>
+    <p><strong>Specialization:</strong> {{ user_info.specialization }}</p>
+    <p><strong>Birth Date:</strong> {{ user_info.birth_date }}</p>
+    <p><strong>City:</strong> {{ user_info.get_city_display }}</p>
+    <p><strong>Contact Email:</strong> {{ user_info.contact_email }}</p>
+    <p><strong>Phone:</strong> {{ user_info.phone }}</p>
+    <p><strong>Available for Consultation:</strong> {{ user_info.available_for_consultation }}</p>
+    <a href="{% url 'profile-edit' %}">Edit Profile</a>
+</body>
+</html>
+
+{% endblock %}
