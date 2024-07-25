@@ -2,10 +2,16 @@
 
 {% block content %}
 
-<form action="{% url 'create-profile' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create Profile</button>
-</form>
+
+<div class="background"></div>
+
+<div class="profile-container">
+    <h1>Create Profile</h1>
+    <form action="{% url 'create-profile' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Profile</button>
+    </form>
+</div>
 
 {% endblock content %}

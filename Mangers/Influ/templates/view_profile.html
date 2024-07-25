@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+
+.profile-view-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-header .profile-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-header h1 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.profile-header .specialization {
+    font-size: 18px;
+    color: #666;
+}
+
+.profile-header .location-language span {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.profile-details p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-list li {
+    display: inline-block;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.contact-section {
+    margin-top: 20px;
+}
+
+.contact-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    margin-bottom: 5px;
+}
+
+
+
+</style>
+
+{% load static %}
+<link rel="stylesheet" href="{% static Css/view_profile.css}">
+<div class="profile-view-container">
+    <div class="profile-header">
+        <img src="{{ form.profile_images.url }}" alt="Profile Picture" class="profile-picture">
+        <h1>{{ form.first_name }} {{ form.last_name }}</h1>
+        <h3 class="specialization">{{ form.specialization }}</h3>
+        <div class="location-language">
+            <span>{{ form.city }}</span>
+            <span>{{ form.language }}</span>
+        </div>
+    </div>
+    <div class="profile-details">
+        <h2>About me</h2>
+        <p>{{ form.bio }}</p>
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>SEO expert</li>
+            <li>Backlinks expert</li>
+            <li>On-page SEO expert</li>
+            <li>Guest posting expert</li>
+            <li>Technical SEO expert</li>
+        </ul>
+    </div>
+    <div class="contact-section">
+        <h3>Contact me</h3>
+        <p>Email: {{ form.contact_email }}</p>
+        <p>Phone: {{ form.phone }}</p>
+    </div>
+</div>
+{% endblock %}

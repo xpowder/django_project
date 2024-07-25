@@ -1,22 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ user_info.name }}'s Profile</title>
-</head>
-<body>
-    <h1>{{ user_info.name }}</h1>
-    <img src="{{ user_info.avatar }}" alt="Profile Image">
-    <p><strong>Bio:</strong> {{ user_info.bio }}</p>
-    <p><strong>Specialization:</strong> {{ user_info.specialization }}</p>
-    <p><strong>Birth Date:</strong> {{ user_info.birth_date }}</p>
-    <p><strong>City:</strong> {{ user_info.get_city_display }}</p>
-    <p><strong>Contact Email:</strong> {{ user_info.contact_email }}</p>
-    <p><strong>Phone:</strong> {{ user_info.phone }}</p>
-    <p><strong>Available for Consultation:</strong> {{ user_info.available_for_consultation }}</p>
-    <a href="{% url 'profile-edit' %}">Edit Profile</a>
-</body>
-</html>
+
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'Css/profile.css' %}">
+
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-picture">
+            <img src="{{ user_info.profile_images.url }}" alt="Profile Picture" class="avatar">
+            {% if user_info.available_for_consultation %}
+                <span class="status online">• Online</span>
+            {% else %}
+                <span class="status offline">• Offline</span>
+            {% endif %}
+        </div>
+        <div class="profile-details">
+            <h2>{{ user_info.first_name }} {{ user_info.last_name }}</h2>
+            <p class="username">@{{ user.username }}</p>
+            <p class="bio">{{ user_info.bio }}</p>
+            <p class="rating">4.7 (1 review)</p>
+            <form action="{% url 'view-profile' %}">
+            <button class="btn preview-profile-btn">Preview Profile</button>
+            </form>
+        </div>
+    </div>
+    <div class="profile-info">
+        <div class="info-item">
+            <span class="info-title">From</span>
+            <span class="info-value">{{ user_info.city }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-title">Member since</span>
+            <span class="info-value">{{ user.date_joined|date:"b Y" }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-title">Emaill</span>
+            <span class="info-value">{{user_info.contact_email}}</span>
+        </div>
+        <div class="info-item available">
+            <span>Available</span>
+        </div>
+    </div>
+    <form method="get" action="{% url 'profile-edit' %}">
+        <button type="submit" class="btn edit-profile-btn">Edit</button>
+    </form>
+</div>
+
+
+
+
 
 {% endblock %}

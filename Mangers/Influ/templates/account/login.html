@@ -2,26 +2,25 @@
 
 {% block content %}
 <style>
-    /* Ensure the body takes up the full viewport height */
-
-
     .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         background-color: white;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         max-width: 400px;
         width: 100%;
+        text-align: center;
     }
 
     h1 {
-        text-align: center;
         color: #333;
         margin-bottom: 20px;
     }
 
     p {
-        text-align: center;
         margin-bottom: 20px;
     }
 
@@ -31,62 +30,85 @@
     }
 
     input {
-        padding: 10px;
-        margin: 10px 0;
+        padding: 9px;
+        margin: 9px 0;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 70px;
     }
 
     button {
-        padding: 10px;
-        background-color: #007BFF;
+        padding: 9px;
+        background-color: #ac7575;
         color: white;
         border: none;
-        border-radius: 4px;
+        border-radius: 70px;
         cursor: pointer;
         transition: background-color 0.3s;
     }
 
     button:hover {
-        background-color: #0056b3;
+        background-color: #c1cfdf;
     }
 
     .secondary {
-        background-color: #6c757d;
+        background-color: #d36565;
         margin-top: 10px;
     }
 
     .secondary:hover {
-        background-color: #5a6268;
+        background-color: #d36565;
     }
 
     .login-alternatives {
-        text-align: center;
-        margin-top: 20px;
+        margin-top: 18px;
     }
 
     hr {
-        margin: 20px 0;
+        margin: 10px 0;
         border: 0;
         border-top: 1px solid #ccc;
     }
+
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        animation: changeBackground 10s infinite;
+    }
+
+    @keyframes changeBackground {
+        10% {
+            background-image: url('image/art.png');
+        }
+        50% {
+            background-image: url('image/art.png');
+        }
+        100% {
+            background-image: url('image/art.png');
+        }
+    }
 </style>
 
+<div class="background"></div>
+
 <div class="login-container">
-    <h1>Sign In</h1>
+    <h1>Login</h1>
     {% if not SOCIALACCOUNT_ONLY %}
-        <p>If you have not created an account yet, then please <a href="{{ signup_url }}">sign up</a> first.</p>
+        <p>If you don't have an account? <a href="{{ signup_url }}">sign up</a> first.</p>
         <form method="post" action="{% url 'account_login' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            {{ redirect_field.value }}
-            <button type="submit">Sign In</button>
+            
+            <button type="submit">Login</button>
         </form>
     {% endif %}
     {% if LOGIN_BY_CODE_ENABLED %}
         <hr>
         <h2>Mail me a sign-in code</h2>
-        <a href="{{ request_login_code_url }}" class="secondary">Request Code</a>
+        <a href="{{ request_login_code_url }}" class="secondary">Request Sign-in Code</a>
     {% endif %}
     {% if SOCIALACCOUNT_ENABLED %}
         <div class="login-alternatives">
@@ -94,4 +116,4 @@
         </div>
     {% endif %}
 </div>
-{% endblock content %}
+{% endblock %}

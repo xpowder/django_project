@@ -1,0 +1,76 @@
+.profile-view-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-header .profile-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-header h1 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.profile-header .specialization {
+    font-size: 18px;
+    color: #666;
+}
+
+.profile-header .location-language span {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.profile-details p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-list li {
+    display: inline-block;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.contact-section {
+    margin-top: 20px;
+}
+
+.contact-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    margin-bottom: 5px;
+}

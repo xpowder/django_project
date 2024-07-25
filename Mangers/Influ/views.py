@@ -45,6 +45,11 @@ def home(requset):
     return render(requset, 'base.html', {})
 
 
+
+def view_profile(requset):
+    form = get_object_or_404(UserInfo, user=requset.user)
+    return render(requset, 'view_profile.html', {'form' : form })
+
 @login_required
 def profile_edit(request):
     user_info = get_object_or_404(UserInfo, user=request.user)

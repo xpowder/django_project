@@ -6,12 +6,58 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'Css/sheet.css' %}">
     <title>{% block title %}Managers{% endblock %}</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        nav {
+            background-color: #BC966B;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+            padding: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .nav-links li {
+            margin: 0 10px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="nav-content">
             <div class="logo">
-                <a href="{% url 'home' %}">ArtisManagers.</a>
+                <a href="{% url 'home' %}" style="color: white;">ArtisManagers.</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
@@ -20,23 +66,23 @@
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
-            {% if user.is_authenticated %}
-        <li class="nav-links"><a href="{% url 'profile' %}">Profile</a></li>
-        <li class="nav-links"><a href="{% url 'account_logout' %}">Logout</a></li>
-    {% else %}
-    <li class="nav-links"><a href="/accounts/login/">Login</a></li>
-
-
-
-    {% endif %}
-</ul>
+            <div class="nav-links">
+                {% if user.is_authenticated %}
+                <div>
+                    <a href="{% url 'profile' %}">Profile</a>
+                </div>
+                    <div class="nav-links">
+                    <a href="{% url 'account_logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <a href="{% url 'account_login' %}">Login</a>
+                {% endif %}
+            </div>
         </div>
     </nav>
 
     <div class="content">
         {% block content %}
-        <!-- Child templates will insert content here -->
-         <a href="{% url 'create-profile'%}">Create your Profile</a>
         {% endblock %}
     </div>
 </body>

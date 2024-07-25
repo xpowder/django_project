@@ -1,19 +1,115 @@
-.welcome-message {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 2rem;
-    text-align: center;
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.welcome-message h3 {
-    color: #333;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.welcome-message p {
-    color: #555;
-    font-size: 1.2rem;
+.profile-picture {
+    position: relative;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status.offline {
+    background-color: #f44336;
+}
+
+.profile-details h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.username {
+    font-size: 18px;
+    color: #888;
+}
+
+.bio {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.rating {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.preview-profile-btn {
+    background-color: #6c5ce7;
+    margin: 10px 0;
+}
+
+.edit-profile-btn {
+    background-color: #6c5ce7;
+    margin: 20px 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.info-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.info-title {
+    font-size: 16px;
+    color: #888;
+}
+
+.info-value {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.available span {
+    color: #4caf50;
+    font-weight: bold;
 }
