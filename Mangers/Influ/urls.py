@@ -17,7 +17,7 @@ handler404 = custom_404
 urlpatterns = [
     #path('singup/', views.Singup_view, name='singup'),
     path('', views.home, name='home'),
-    path('page/', views.home_page),
+    
     path('create-profile/', views.create_profile, name='create-profile'),
     path('profile-edit/', views.profile_edit, name='profile-edit'),
     path('profile/', views.profile_view, name='profile'),

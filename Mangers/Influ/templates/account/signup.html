@@ -1,121 +1,141 @@
-{% extends 'base.html' %}
+{% extends 'navbar.html' %}
 
 {% block content %}
 <style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #0F1819;
+        color: white;
+        background-size: cover;
+        background-position: center;
+    }
+
     .login-container {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        background-color: white;
+        height: 100vh;
         padding: 20px;
+    }
+
+    .login-form {
+        background-color: #18222D;
         border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 40px 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
         max-width: 400px;
         width: 100%;
-        text-align: center;
+        margin-right: 50px; /* Add space between image and form */
     }
 
-    h1 {
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    p {
-        margin-bottom: 20px;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    input {
-        padding: 9px;
-        margin: 9px 0;
-        border: 1px solid #ccc;
-        border-radius: 70px;
-    }
-
-    button {
-        padding: 9px;
-        background-color: #ac7575;
+    .login-form h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
         color: white;
+    }
+
+    .login-form p {
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .login-form input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 50px;
+        border: 1px solid #ccc;
+        background-color: #27343B;
+        color: white;
+    }
+
+    .login-form button {
+        width: 100%;
+        padding: 10px;
         border: none;
-        border-radius: 70px;
+        border-radius: 50px;
+        background-color: #ff3c5f;
+        color: white;
+        font-size: 16px;
         cursor: pointer;
         transition: background-color 0.3s;
     }
 
-    button:hover {
-        background-color: #e1b7b7;
+    .login-form button:hover {
+        background-color: #9340ff;
     }
 
-    .secondary {
-        background-color: #ac7575;
+    .login-form .secondary {
+        background-color: #D36565;
         margin-top: 10px;
     }
 
-    .secondary:hover {
-        background-color: #ac7575;
+    .login-form .secondary:hover {
+        background-color: #E06A6A;
     }
 
     .login-alternatives {
         margin-top: 18px;
     }
 
-    hr {
-        margin: 10px 0;
+    .login-form hr {
+        margin: 20px 0;
         border: 0;
         border-top: 1px solid #ccc;
     }
 
-    .background {
-        position: fixed;
-        top: 0;
-        left: 0;
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image-container img {
         width: 100%;
-        height: 100%;
-        z-index: -1;
-        animation: changeBackground 10s infinite;
+        max-width: 600px;
+        border-radius: 8px;
     }
 
-    @keyframes changeBackground {
-        10% {
-            background-image: url('image/art.png');
+    @media (max-width: 768px) {
+        .login-container {
+            flex-direction: column;
         }
-        50% {
-            background-image: url('image/art.png');
-        }
-        100% {
-            background-image: url('image/art.png');
-        }
-    }
 
-    .password-hint {
-        display: none;
+        .login-form {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
     }
 </style>
 
 <div class="background"></div>
 
 <div class="login-container">
-    <h1>Sign Up</h1>
-    <p>If you already have an account? <a href="{{ login_url }}">sign in here</a>.</p>
-    <form method="post" action="{% url 'account_signup' %}">
-        {% csrf_token %}
-        {{ form.email }}
-        {{ form.username }}
-        {{ form.password1 }}
-        <div class="password-hint">
-            {{ form.password1.errors }}
-        </div>
-        {{ form.password2 }}
-        <button type="submit">Sign Up</button>
-    </form>
-    {% if SOCIALACCOUNT_ENABLED %}
-        <div class="login-alternatives">
-            {% include "socialaccount/snippets/login.html" %}
-        </div>
-    {% endif %}
+    <div class="image-container">
+        {% load static %}
+        <img src="{% static 'images/Blue and Pink Music Login Page Desktop Prototype.png' %}" alt="Sign Up Image">
+    </div>
+    <div class="login-form">
+        <h1>Sign Up</h1>
+        <p>If you already have an account? <a href="{{ login_url }}">Sign in here</a>.</p>
+        <form method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form.email }}
+            {{ form.username }}
+            {{ form.password1 }}
+            <div class="password-hint">
+                {{ form.password1.errors }}
+            </div>
+            {{ form.password2 }}
+            <button type="submit">Sign Up</button>
+        </form>
+        {% if SOCIALACCOUNT_ENABLED %}
+            <div class="login-alternatives">
+                {% include "socialaccount/snippets/login.html" %}
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

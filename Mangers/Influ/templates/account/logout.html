@@ -1,48 +1,57 @@
-{% extends 'base.html' %}
+{% extends 'navbar.html' %}
 
 {% block content %}
+{% load static %}
 <style>
-    
+    .background-container {
+        background-image: url("{% static 'account/image/art.png' %}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     .logout-container {
-        justify-content: center;
-        
         background-color: white;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         max-width: 400px;
         width: 100%;
+        text-align: center;
     }
 
     h1 {
-        text-align: center;
         color: #333;
         margin-bottom: 20px;
     }
 
     p {
-        text-align: center;
         margin-bottom: 20px;
     }
 
     form {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     button {
         padding: 10px;
-        background-color: #e5a1a1;
+        background-color: #ff3c5f;
         color: white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.3s;
+        width: 100%;
+        max-width: 200px;
     }
 
     button:hover {
-        background-color: #ac7575;
+        background-color: #9340ff;
     }
 
     .secondary {
@@ -54,13 +63,16 @@
         background-color: #5a6268;
     }
 </style>
-<div class="logout-container">
-    <h1>Sign Out</h1>
-    <p>Are you sure you want to sign out?</p>
-    <form method="post" action="{% url 'account_logout' %}">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Sign Out</button>
-    </form>
+
+<div class="background-container">
+    <div class="logout-container">
+        <h1>Sign Out</h1>
+        <p>Are you sure you want to sign out?</p>
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Sign Out</button>
+        </form>
+    </div>
 </div>
 {% endblock content %}

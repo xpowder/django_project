@@ -38,11 +38,15 @@ def profile_view(request):
 
 
 
-def home_page(requset):
-    return render(requset, 'home.html', {})
+def home(request):
+    user_info = None
+    if request.user.is_authenticated:
+        user_info = UserInfo.objects.get(user=request.user)
+    
+    return render(request, 'base.html', {
+        'user_info': user_info,
+    })
 
-def home(requset):
-    return render(requset, 'base.html', {})
 
 
 

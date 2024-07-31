@@ -166,5 +166,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 SITE_ID = 1
 
 # Redirect URLs after login and logout
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/profile/'
+
 LOGOUT_REDIRECT_URL = '/'
