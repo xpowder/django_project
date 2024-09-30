@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-# Create your views here.
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
@@ -11,9 +10,8 @@ from .forms import ProfileForm
 
 @login_required
 def create_profile(request):
-    # Check if the user already has a profile
     if UserInfo.objects.filter(user=request.user).exists():
-        return redirect('profile')  # Redirect to the profile page if the user already has a profile
+        return redirect('profile')  
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
@@ -21,8 +19,7 @@ def create_profile(request):
             user_info = form.save(commit=False)
             user_info.user = request.user
             user_info.save()
-            return redirect('profile')  # Redirect to the profile page after successful creation
-    else:
+            return redirect('profile') 
         form = ProfileForm()
     
     return render(request, 'create_profile.html', {'form': form})
@@ -62,7 +59,7 @@ def profile_edit(request):
         form = ProfileForm(request.POST, request.FILES, instance=user_info)
         if form.is_valid():
             form.save()
-            return redirect('profile')  # Redirect to the profile page after successful save
+            return redirect('profile') 
     else:
         form = ProfileForm(instance=user_info)
     

@@ -22,6 +22,5 @@ def user_receiver(sender, instance, created, **kwargs):
     user = instance
 
 
-    # Add profile if user is created
     if created:
         UserInfo.objects.create(user = user,)

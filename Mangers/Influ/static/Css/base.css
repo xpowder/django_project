@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ body {
     background-color: #0F1819;
 }
 
-/* Navbar Styles */
 nav.container {
     display: flex;
     justify-content: space-between;
@@ -19,7 +17,7 @@ nav.container {
     background-color: #0F1819;
     color: #c00000;
     padding: 10px 20px;
-    margin-bottom: 40px; /* Add space below the navbar */
+    margin-bottom: 40px; 
 }
 
 .logo img {
@@ -65,25 +63,24 @@ a.login:hover {
 
 
 
-/* Hero Section */
 .hero {
     background: #0F1819;
     text-align: left;
     padding: 100px 20px;
     position: relative;
-    margin-bottom: 40px; /* Add space below the hero section */
+    margin-bottom: 40px; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align the content */
-    justify-content: center; /* Center the content vertically */
-    height: 100vh; /* Full viewport height */
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
 }
 
 .hero h1 {
     color: #f4f4f4;
     font-size: 48px;
     margin-bottom: 20px;
-    text-align: center; /* Center the text */
+    text-align: center; 
 }
 
 .hero .cat-button {
@@ -110,16 +107,15 @@ a.login:hover {
 .hero .hero-image img {
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(86, 94, 207, 0.5);
-    max-width: 400px; /* Adjust as needed */
+    max-width: 400px; 
     height: auto;
 }
 
-/* About Us Section */
 .about-us {
     padding: 100px 20px;
     background: #0F1819;
     text-align: center;
-    margin-bottom: 40px; /* Add space below the about us section */
+    margin-bottom: 40px; 
 }
 
 .about-us h2 {
@@ -138,14 +134,13 @@ a.login:hover {
     margin: 0 auto;
 }
 
-/* Services Section */
 .services {
     padding: 50px 20px;
     background: #0F1819;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px; /* Add space below the services section */
+    margin-bottom: 40px; 
 }
 
 .services-content {
@@ -185,7 +180,6 @@ a.login:hover {
     height: auto;
 }
 
-/* Footer Styles */
 footer {
     padding: 20px;
     background: #0F1819;
@@ -223,7 +217,6 @@ footer .social-media a {
 
 
 
-/* userdwon */
 
 .nav-right .relative {
     position: relative;
@@ -296,20 +289,17 @@ footer .social-media a {
     border-radius: 50%;
 }
 
-/* Profile picture size */
 #avatarButton {
-    width: 40px; /* Adjust as needed */
-    height: 40px; /* Adjust as needed */
+    width: 40px; 
+    height: 40px; 
 }
 
-/* Ensure images in sections are responsive */
 .hero-image img,
 .services-image img {
     max-width: 100%;
     height: auto;
 }
 
-/* Add margins to sections for spacing */
 section {
     margin: 20px 0;
 }

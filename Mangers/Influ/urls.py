@@ -26,13 +26,6 @@ urlpatterns = [
 
 
 
-  # This should work if django.contrib.auth.urls is correctly set up
-
-
-    
-    
-    
-    # Includes registration/account management
 
 ]
 
